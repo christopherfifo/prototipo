@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <title>Home | Excellence LMS</title>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4bb6b7',
+            gold: '#FFD700',
+            darkblue: '#2b2b97',
+          },
+          fontFamily: {
+            serif: ['Merriweather', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-sans">
+
+  <!-- Header -->
+  <header class="bg-white dark:bg-gray-800 shadow-md py-5">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <h1 class="text-2xl md:text-3xl font-bold text-primary font-serif">Excellence LMS</h1>
+      <nav class="space-x-6 text-sm md:text-base">
+        <a href="#features" class="hover:text-primary">Funcionalidades</a>
+        <a href="#usuarios" class="hover:text-primary">Acesso</a>
+        <a href="#sobre" class="hover:text-primary">Sobre</a>
+        <a href="#contato" class="hover:text-primary">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary to-darkblue text-white text-center py-16 px-6">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Tecnologia de ponta para a educação de excelência</h2>
+    <p class="text-lg md:text-xl mb-6 max-w-3xl mx-auto">Plataforma inteligente para acompanhamento acadêmico com relatórios, gráficos interativos e análise de desempenho baseada em IA.</p>
+    <a href="./view/login.html" class="inline-block bg-gold text-darkblue font-bold px-8 py-3 rounded-xl transition hover:bg-yellow-400">Acessar Plataforma</a>
+  </section>
+
+<!-- Features com 6 blocos -->
+<section id="features" class="py-16 bg-gray-100 dark:bg-gray-800">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center">
+
+        <!-- Bloco 4: Acompanhamento do Desempenho -->
+    <div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow">
+      <i class="fas fa-user-graduate text-3xl text-primary mb-4"></i>
+      <h3 class="text-xl font-bold">Acompanhamento do Desempenho</h3>
+      <p class="text-sm mt-2">Alunos visualizam notas, faltas e progresso geral em tempo real.</p>
+    </div>
+
+    <!-- Bloco 5: Ferramentas para Professores -->
+    <div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow">
+      <i class="fas fa-chalkboard-teacher text-3xl text-primary mb-4"></i>
+      <h3 class="text-xl font-bold">Ferramentas para Professores</h3>
+      <p class="text-sm mt-2">Lançamento de notas, presenças e feedback para turmas e disciplinas.</p>
+    </div>
+
+    <!-- Bloco 6: Gestão Institucional -->
+    <div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow">
+      <i class="fas fa-user-cog text-3xl text-primary mb-4"></i>
+      <h3 class="text-xl font-bold">Gestão Institucional</h3>
+      <p class="text-sm mt-2">Coordenadores visualizam relatórios, médias da turma e dados estratégicos.</p>
+    </div>
+    
+    <!-- Bloco 1 -->
+    <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg">
+      <i class="fas fa-chart-pie text-4xl text-primary mb-4"></i>
+      <h3 class="text-xl font-semibold">Dashboard Inteligente</h3>
+      <p class="text-sm mt-2">Visualize métricas em tempo real com gráficos interativos e relatórios analíticos.</p>
+    </div>
+
+    <!-- Bloco 2 -->
+    <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg">
+      <i class="fas fa-mobile-alt text-4xl text-primary mb-4"></i>
+      <h3 class="text-xl font-semibold">Responsividade Total</h3>
+      <p class="text-sm mt-2">Experiência fluida em celulares, tablets e desktops, com design adaptável e moderno.</p>
+    </div>
+
+    <!-- Bloco 3 -->
+    <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg">
+      <i class="fas fa-robot text-4xl text-primary mb-4"></i>
+      <h3 class="text-xl font-semibold">Inteligência Artificial</h3>
+      <p class="text-sm mt-2">Feedbacks personalizados e recomendação de conteúdos com base no desempenho.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Acesso Personalizado -->
+<section id="usuarios" class="py-20 bg-white dark:bg-gray-900 text-center">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-6 text-primary">Acesso Personalizado</h2>
+    <p class="text-md md:text-lg text-gray-700 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+      Escolha seu tipo de acesso para entrar na plataforma de aprendizado. Cada perfil tem um ambiente exclusivo com ferramentas sob medida.
+    </p>
+
+    <div class="grid gap-10 md:grid-cols-3 text-left">
+      <!-- Aluno -->
+      <div class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-xl transition">
+        <div class="flex items-center gap-4 mb-4">
+          <i class="fas fa-user-graduate text-4xl text-primary"></i>
+          <h3 class="text-xl font-semibold text-primary">Sou Aluno</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+          Acompanhe seu desempenho, receba feedback personalizado e acesse conteúdos recomendados com base na sua evolução.
+        </p>
+        <a href="./view/login.html" class="inline-block mt-2 bg-primary text-white px-5 py-2 rounded-full hover:bg-[#3ba7a7] transition font-medium">Entrar como Aluno</a>
+      </div>
+
+      <!-- Professor -->
+      <div class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-xl transition">
+        <div class="flex items-center gap-4 mb-4">
+          <i class="fas fa-chalkboard-teacher text-4xl text-primary"></i>
+          <h3 class="text-xl font-semibold text-primary">Sou Professor</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+          Gerencie suas turmas, publique atividades, acompanhe relatórios de desempenho e envie feedbacks diretamente aos alunos.
+        </p>
+        <a href="./view/loginProf.html" class="inline-block mt-2 bg-primary text-white px-5 py-2 rounded-full hover:bg-[#3ba7a7] transition font-medium">Entrar como Professor</a>
+      </div>
+
+      <!-- Coordenador -->
+      <div class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-xl transition">
+        <div class="flex items-center gap-4 mb-4">
+          <i class="fas fa-user-tie text-4xl text-primary"></i>
+          <h3 class="text-xl font-semibold text-primary">Sou Coordenador</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+          Acesse análises globais da instituição, monitore o progresso por disciplina e baixe relatórios completos em tempo real.
+        </p>
+        <a href="./loginPage.php?role=coordenador" class="inline-block mt-2 bg-primary text-white px-5 py-2 rounded-full hover:bg-[#3ba7a7] transition font-medium">Entrar como Coordenador</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="py-16 bg-gray-50 dark:bg-gray-800 text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold mb-4">Sobre a Plataforma</h2>
+      <p class="text-md md:text-lg text-gray-700 dark:text-gray-300">Criado com foco na excelência pedagógica e tecnologia educacional de ponta, o Excellence LMS atende às demandas de instituições educacionais que buscam inovação, controle e personalização na jornada de aprendizagem. Projetado para instituições de ensino de alto padrão, com suporte à análise de dados, integração de conteúdo e escalabilidade.</p>
+    </div>
+  </section>
+
+  <!-- Depoimentos com ícones refinados -->
+  <section class="py-16 bg-white dark:bg-gray-900 text-center">
+    <h2 class="text-2xl font-bold mb-10">O que dizem sobre nós</h2>
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow text-left">
+        <i class="fas fa-university text-primary text-2xl mb-2"></i>
+        <p class="italic mb-4">“Com o Excellence LMS, conseguimos reduzir em 40% a evasão escolar e aumentar o engajamento dos alunos.”</p>
+        <strong class="block text-primary">Diretora, Colégio Estelar</strong>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow text-left">
+        <i class="fas fa-flask text-primary text-2xl mb-2"></i>
+        <p class="italic mb-4">“A personalização dos conteúdos por IA mudou a forma como os alunos se preparam para as avaliações.”</p>
+        <strong class="block text-primary">Professor de Física, Anglo Tech</strong>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow text-left">
+        <i class="fas fa-users-cog text-primary text-2xl mb-2"></i>
+        <p class="italic mb-4">“Interface impecável, desempenho excepcional. Finalmente um sistema à altura da nossa instituição.”</p>
+        <strong class="block text-primary">Coordenador Pedagógico, Lumière High School</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contato" class="bg-darkblue text-white py-8 mt-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="mb-4 md:mb-0">&copy; 2025 Excellence LMS • Desenvolvido por Christopher</p>
+      <div class="space-x-4">
+        <a href="#" class="hover:text-gold"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-gold"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-gold"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

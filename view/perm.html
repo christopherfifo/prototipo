@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acesso Liberado | Excellence LMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4bb6b7',
+            darkblue: '#2b2b97',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center relative overflow-hidden">
+
+  <!-- Fundo -->
+  <div class="absolute inset-0 -z-10">
+    <img src="../pictures/trem.webp" alt="Fundo noturno" class="w-full h-full object-cover opacity-30" />
+  </div>
+
+  <!-- Botão de Voltar -->
+  <a href="../index.html" class="absolute top-6 left-6 flex items-center text-sm text-white hover:text-primary transition z-10">
+    <i class="fas fa-arrow-left mr-2"></i> Voltar para a Home
+  </a>
+
+  <!-- Cartão de Confirmação -->
+  <div class="relative z-10 w-full max-w-lg p-8 bg-gray-800/90 backdrop-blur-md rounded-2xl border border-primary shadow-xl text-center">
+
+    <div class="mb-6">
+      <i class="fas fa-check-circle text-5xl text-primary mb-3"></i>
+      <h1 class="text-3xl font-bold text-primary mb-2">Acesso Liberado</h1>
+      <p class="text-gray-300 text-sm">
+        Seu acesso foi aprovado pela equipe técnica do sistema. Agora você já pode realizar seu cadastro completo na plataforma.
+      </p>
+    </div>
+
+    <!-- Botão de Cadastro -->
+    <a href="cadastro.html" class="inline-block bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-500 transition">
+      Realizar Cadastro
+    </a>
+  </div>
+
+</body>
+</html>

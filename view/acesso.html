@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitar Acesso | Excellence LMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4bb6b7',
+            darkblue: '#2b2b97',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center relative overflow-hidden">
+
+  <!-- Fundo de cidade -->
+  <div class="absolute inset-0 -z-10">
+    <img src="../pictures/city.webp" alt="Cidade à Noite" class="w-full h-full object-cover opacity-25">
+  </div>
+
+  <!-- Botão de Voltar -->
+  <a href="./loginProf.html" class="absolute top-6 left-6 flex items-center text-sm text-white hover:text-primary transition z-10">
+    <i class="fas fa-arrow-left mr-2"></i> Voltar para a Login
+  </a>
+
+  <!-- Cartão de solicitação -->
+  <div class="relative z-10 w-full max-w-md p-8 bg-gray-800/90 backdrop-blur-md rounded-2xl border border-primary shadow-xl">
+    <div class="text-center mb-6">
+      <i class="fas fa-unlock-alt text-4xl text-primary mb-2"></i>
+      <h1 class="text-3xl font-bold text-primary">Solicitar Acesso</h1>
+      <p class="text-sm text-gray-300">Informe seu email institucional e matrícula</p>
+    </div>
+
+    <form action="" method="POST" class="space-y-5">
+      <!-- Email -->
+      <div class="relative">
+        <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-primary"></i>
+        <input type="email" id="email" name="email" required
+          class="w-full pl-10 pr-4 py-2 rounded bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder="Email institucional">
+      </div>
+
+      <!-- Matrícula -->
+      <div class="relative">
+        <i class="fas fa-id-badge absolute left-3 top-1/2 transform -translate-y-1/2 text-primary"></i>
+        <input type="text" id="matricula" name="matricula" required
+          class="w-full pl-10 pr-4 py-2 rounded bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder="Matrícula / RA">
+      </div>
+
+      <!-- Botão de envio -->
+      <button type="submit"
+        class="w-full bg-primary text-white py-2 rounded-full hover:bg-teal-500 transition font-semibold">
+        Enviar Pedido
+      </button>
+    </form>
+  </div>
+<script>
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Opcional: desabilitar o botão para evitar múltiplos envios
+    const btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    setTimeout(function() {
+      window.location.href = './perm.html';
+    }, 2000); // 2000 ms = 2 segundos
+  });
+</script>
+
+</body>
+</html>
