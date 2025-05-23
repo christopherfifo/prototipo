@@ -12,7 +12,6 @@
     <title>login</title>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -58,9 +57,7 @@
             .shadow-custom {
                 box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
             }
-            .shadow-custom-dark {
-                box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25), 0 10px 10px rgba(255, 255, 255, 0.22);
-            }
+            /* Removido .shadow-custom-dark */
             
             /* Animação do overlay */
             .right-panel-active .register-container {
@@ -85,18 +82,18 @@
     </style>
 </head>
 
-<body class="obj bg-gray-100 flex justify-center items-center flex-col h-screen overflow-hidden dark:bg-black">
+<body class="obj bg-gray-100 flex justify-center items-center flex-col h-screen overflow-hidden">
     <header class="topo w-full absolute top-0 left-0 z-[1000] px-4 flex justify-between items-center">
         <button class="tema obj bg-transparent border-none p-0 m-0 cursor-pointer">
-            <a href="../index.html" class="home-link obj no-underline text-black flex items-center gap-2 dark:text-white">
+            <a href="../index.html" class="home-link obj no-underline text-black flex items-center gap-2">
                 <span class="home-title text-xl flex items-center gap-1">
-                    <i class="fa-solid fa-house text-2xl !text-black dark:!text-darkblue" id="home"></i>Home
+                    <i class="fa-solid fa-house text-2xl !text-black" id="home"></i>Home
                 </span>
             </a>
         </button>
     </header>
 
-    <div class="container obj bg-white rounded-3xl shadow-custom relative overflow-hidden w-[768px] max-w-full min-h-[500px] dark:shadow-custom-dark" id="container">
+    <div class="container obj bg-white rounded-3xl shadow-custom relative overflow-hidden w-[768px] max-w-full min-h-[500px]" id="container">
         <!-- Formulário de Login -->
         <div class="form-container login-container absolute top-0 h-full transition-all duration-600 ease-in-out left-0 w-1/2 z-10">
             <form action="" method="POST" class="form_login flex flex-col items-center justify-center bg-white text-center px-12 h-full" id="formLogin">
@@ -105,7 +102,7 @@
                 <input type="email" id="accessInput" name="usuario" placeholder="Email" class="inputs_login bg-gray-200 rounded-xl border-none py-3 px-4 my-2 w-full">
                 <div class="espaco-senha w-full relative">
                     <input type="password" name="password" placeholder="Password" class="inputs_login bg-gray-200 rounded-xl border-none py-3 px-4 my-2 w-full pr-10" id="senha_entrar">
-                    <i class="fa-regular fa-eye olhos obj absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 text-primary dark:text-darkblue"></i>
+                    <i class="fa-regular fa-eye olhos obj absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 text-primary"></i>
                 </div>
                 <div class="content w-full h-[50px] flex pl-2">
                     <div class="checkbox flex items-center justify-center">
@@ -113,7 +110,7 @@
                         <label for="remember-me" class="text-sm pl-1 select-none">lembre-me</label>
                     </div>
                 </div>
-                <button type="submit" class="rl-tema obj rounded-2xl border border-primary bg-primary text-white font-bold py-3 px-20 mx-2 my-2 transition-slow hover:tracking-wider active:scale-95 focus:outline-none dark:border-darkblue dark:bg-darkblue" id="vali_login">
+                <button type="submit" class="rl-tema obj rounded-2xl border border-primary bg-primary text-white font-bold py-3 px-20 mx-2 my-2 transition-slow hover:tracking-wider active:scale-95 focus:outline-none" id="vali_login">
                     Login
                 </button>
             </form>
@@ -143,18 +140,18 @@
                 <div class="espaco-input w-full flex flex-col text-left mb-2">
                     <div class="espaco-senha w-full relative">
                         <input type="password" name="password" placeholder="Password" class="required input-register senha-copy bg-gray-200 rounded-xl border-none py-3 px-4 w-full outline-none pr-10">
-                        <i class="fa-regular fa-eye olhos obj absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 text-primary dark:text-darkblue"></i>
+                        <i class="fa-regular fa-eye olhos obj absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 text-primary"></i>
                     </div>
                     <span class="error_span text-red-500 text-xs font-medium hidden"></span>
                 </div>
                 <div class="espaco-input w-full flex flex-col text-left mb-2">
                     <div class="espaco-senha w-full relative">
                         <input type="password" name="password_confirm" placeholder="Confirm Password" class="required input-register senha-copy bg-gray-200 rounded-xl border-none py-3 px-4 w-full outline-none pr-10">
-                        <i class="fa-regular fa-eye olhos obj absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 text-primary dark:text-darkblue"></i>
+                        <i class="fa-regular fa-eye olhos obj absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 text-primary"></i>
                     </div>
 
                 </div>
-                <button type="submit" id="vali_register" class="rl-tema obj rounded-2xl border border-primary bg-primary text-white font-bold py-3 px-20 mx-2 my-2 transition-slow hover:tracking-wider active:scale-95 focus:outline-none dark:border-darkblue dark:bg-darkblue">
+                <button type="submit" id="vali_register" class="rl-tema obj rounded-2xl border border-primary bg-primary text-white font-bold py-3 px-20 mx-2 my-2 transition-slow hover:tracking-wider active:scale-95 focus:outline-none">
                     Registrar
                 </button>
             </form>
@@ -162,7 +159,7 @@
 
         <!-- Overlay Container -->
         <div class="overlay-container absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-all duration-600 ease-in-out z-[100]">
-            <div class="overlay obj bg-[url('../pictures/login/gif-dia.webp')] bg-cover bg-center text-white relative left-[-100%] h-full w-[200%] transition-all duration-600 ease-in-out dark:bg-[url('../pictures/login/gif-noite.webp')]">
+            <div class="overlay obj bg-[url('../pictures/login/gif-dia.webp')] bg-cover bg-center text-white relative left-[-100%] h-full w-[200%] transition-all duration-600 ease-in-out">
                 <!-- Gerador de Senha -->
                 <div class="overlay-panel overlay-left absolute top-0 flex items-center justify-center flex-col px-10 h-full w-1/2 transition-all duration-600 ease-in-out transform -translate-x-[20%]">
 
