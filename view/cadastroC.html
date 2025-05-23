@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro Coordenador | Excellence LMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            azulClaro: '#A3E0F6',
+            azulMedio: '#59C7FF',
+            verdeClaro: '#3DDC91',
+            verdeEscuro: '#126947',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-800 min-h-screen flex items-center justify-center relative overflow-hidden">
+
+  <!-- Fundo -->
+  <div class="absolute inset-0 -z-10">
+    <img src="../pictures/registerC.webp" alt="Fundo Cadastro" class="w-full h-full object-cover brightness-[0.9]" />
+  </div>
+
+  <!-- Botão de voltar -->
+  <a href="./permCod.html" class="absolute top-6 left-6 flex items-center text-sm text-white hover:text-verdeEscuro transition z-10">
+    <i class="fas fa-arrow-left mr-2"></i> Voltar 
+  </a>
+
+  <!-- Cartão de cadastro -->
+  <div class="relative z-10 w-full max-w-xl p-8 bg-white/80 backdrop-blur-md rounded-2xl border border-azulClaro shadow-xl">
+    <div class="text-center mb-6">
+      <i class="fas fa-user-plus text-4xl text-verdeClaro mb-2"></i>
+      <h1 class="text-3xl font-bold text-verdeEscuro">Cadastro do Coordenador</h1>
+      <p class="text-sm text-gray-700">Preencha seus dados para ativar sua conta</p>
+    </div>
+
+    <form action="/controller/registerCoordenador.php" method="POST" class="space-y-5 font-medium">
+      <!-- Estado bloqueado -->
+      <div>
+        <label class="block text-sm mb-1">Estado</label>
+        <input type="text" name="estado" value="São Paulo" readonly
+          class="w-full bg-gray-100 border border-gray-300 text-gray-600 px-4 py-2 rounded cursor-not-allowed" />
+      </div>
+
+      <!-- Cidade bloqueada -->
+      <div>
+        <label class="block text-sm mb-1">Cidade</label>
+        <input type="text" name="cidade" value="Guarulhos" readonly
+          class="w-full bg-gray-100 border border-gray-300 text-gray-600 px-4 py-2 rounded cursor-not-allowed" />
+      </div>
+
+      <!-- Instituição bloqueada -->
+      <div>
+        <label class="block text-sm mb-1">Instituição</label>
+        <input type="text" name="instituicao" value="Instituto Federal - IFSP" readonly
+          class="w-full bg-gray-100 border border-gray-300 text-gray-600 px-4 py-2 rounded cursor-not-allowed" />
+      </div>
+
+      <!-- Nome -->
+      <div class="relative">
+        <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-verdeClaro"></i>
+        <input type="text" name="nome" required
+          class="w-full pl-10 pr-4 py-2 rounded bg-white border border-gray-300 text-gray-800 focus:ring-2 focus:ring-azulClaro"
+          placeholder="Nome completo" />
+      </div>
+
+      <!-- Email -->
+      <div class="relative">
+        <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-verdeClaro"></i>
+        <input type="email" name="email" required
+          class="w-full pl-10 pr-4 py-2 rounded bg-white border border-gray-300 text-gray-800 focus:ring-2 focus:ring-azulClaro"
+          placeholder="Email institucional" />
+      </div>
+
+      <!-- Senhas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="relative">
+          <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-verdeClaro"></i>
+          <input type="password" name="senha" required
+            class="w-full pl-10 pr-4 py-2 rounded bg-white border border-gray-300 text-gray-800 focus:ring-2 focus:ring-azulClaro"
+            placeholder="Senha" />
+        </div>
+        <div class="relative">
+          <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-verdeClaro"></i>
+          <input type="password" name="confirmar" required
+            class="w-full pl-10 pr-4 py-2 rounded bg-white border border-gray-300 text-gray-800 focus:ring-2 focus:ring-azulClaro"
+            placeholder="Confirmar senha" />
+        </div>
+      </div>
+
+      <!-- Botão -->
+      <button type="submit"
+        class="w-full bg-verdeClaro text-white py-2 rounded-full hover:bg-[#34c182] transition font-semibold">
+        Cadastrar
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>

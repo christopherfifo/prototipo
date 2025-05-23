@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acesso Permitido | Excellence LMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            azulClaro: '#A3E0F6',
+            azulMedio: '#59C7FF',
+            verdeClaro: '#3DDC91',
+            verdeEscuro: '#126947',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-800 min-h-screen flex items-center justify-center relative overflow-hidden">
+
+  <!-- Fundo -->
+  <div class="absolute inset-0 -z-10">
+    <img src="../pictures/permC.webp" alt="Fundo acesso permitido" class="w-full h-full object-cover brightness-[0.9]" />
+  </div>
+
+  <!-- Botão de voltar -->
+  <a href="../index.html" class="absolute top-6 left-6 flex items-center text-sm text-white hover:text-verdeClaro transition z-10">
+    <i class="fas fa-arrow-left mr-2"></i> Voltar para a Home
+  </a>
+
+  <!-- Cartão -->
+  <div class="relative z-10 w-full max-w-lg p-8 bg-white/80 backdrop-blur-md rounded-2xl border border-azulClaro shadow-xl text-center">
+    <div class="mb-6">
+      <i class="fas fa-check-circle text-5xl text-verdeClaro mb-3"></i>
+      <h1 class="text-3xl font-bold text-verdeEscuro mb-2">Acesso Permitido</h1>
+      <p class="text-gray-700 text-sm">
+        Seu acesso foi aprovado com sucesso pela equipe técnica da plataforma. Clique no botão abaixo para realizar seu cadastro completo.
+      </p>
+    </div>
+
+    <!-- Botão de Cadastro -->
+    <a href="./cadastroC.html" class="inline-block bg-verdeClaro text-white px-6 py-2 rounded-full font-semibold hover:bg-[#34c182] transition">
+      Realizar Cadastro
+    </a>
+  </div>
+
+</body>
+</html>
