@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <title>Desempenho do Aluno | Excellence LMS</title>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4bb6b7',
+            gold: '#FFD700',
+            darkblue: '#2b2b97',
+            matematica: '#4bb6b7',
+            fisica: '#FFD700',
+            quimica: '#2b2b97',
+          },
+          fontFamily: {
+            serif: ['Merriweather', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .sidebar-collapsed nav a span {
+      display: none;
+    }
+    .sidebar-collapsed {
+      width: 4rem !important;
+    }
+    .ml-64.sidebar-open {
+      margin-left: 16rem !important;
+    }
+    .ml-16.sidebar-closed {
+      margin-left: 4rem !important;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white flex">
+
+  <!-- Sidebar retrátil -->
+  <aside id="sidebar" class="w-64 bg-white dark:bg-gray-800 h-screen fixed top-0 left-0 shadow-lg z-40 transition-all duration-300">
+    <div class="flex items-center justify-between p-6 border-b border-gray-300 dark:border-gray-700">
+      <h2 class="text-xl font-bold text-primary font-serif">LMS</h2>
+      <button onclick="toggleSidebar()" class="text-xl text-darkblue dark:text-white"><i class="fas fa-bars"></i></button>
+    </div>
+    <nav class="p-4 space-y-4 text-sm">
+      <a href="./atividades.html" class="flex items-center gap-2 text-darkblue dark:text-white hover:text-primary font-medium"><i class="fas fa-tasks"></i><span>Atividades</span></a>
+      <a href="./aulas.html" class="flex items-center gap-2 text-darkblue dark:text-white hover:text-primary font-medium"><i class="fas fa-video"></i><span>Aulas</span></a>
+      <a href="#conteudos" class="flex items-center gap-2 text-darkblue dark:text-white hover:text-primary font-medium"><i class="fas fa-book"></i><span>Conteúdos</span></a>
+      <a href="./feed.html" class="flex items-center gap-2 text-darkblue dark:text-white hover:text-primary font-medium"><i class="fas fa-comment-dots"></i><span>Feedbacks</span></a>
+    </nav>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <div id="mainContent" class="ml-64 w-full transition-all duration-300 sidebar-open">
+    <!-- Pop-up de redirecionamento -->
+    <div id="popup" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gold text-darkblue px-6 py-3 rounded-lg shadow-lg z-50 hidden">
+      <p>Veja seu desempenho acadêmico! <a href="#dashboard" class="underline font-bold">Acessar agora</a></p>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 py-8" id="dashboard">
+      <h1 class="text-3xl font-bold mb-6 text-primary font-serif">Meu Desempenho</h1>
+
+      <!-- Feedback geral -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
+        <h2 class="text-lg font-semibold mb-2 text-primary">Resumo do Semestre</h2>
+        <p class="text-sm text-gray-700 dark:text-gray-300">Você evoluiu bem em Matemática e Física. Recomendamos focar um pouco mais em Química para equilibrar seu desempenho geral.</p>
+      </div>
+
+      <!-- Desempenho Geral -->
+      <section class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4">Desempenho Geral</h2>
+        <canvas id="graficoGeral" class="w-full max-w-3xl mx-auto"></canvas>
+      </section>
+
+      <!-- Tabela de Conteúdos de Apoio -->
+      <section id="conteudos" class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4">Conteúdos Recomendados</h2>
+        <table class="w-full text-sm table-auto">
+          <thead>
+            <tr class="bg-primary text-white">
+              <th class="px-4 py-2">Disciplina</th>
+              <th class="px-4 py-2">Conteúdo</th>
+              <th class="px-4 py-2">Link</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-800 dark:text-gray-100">
+            <tr>
+              <td class="border px-4 py-2">Química</td>
+              <td class="border px-4 py-2">Reações Inorgânicas</td>
+              <td class="border px-4 py-2"><a href="#" class="text-blue-500 underline">Assistir Aula</a></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Física</td>
+              <td class="border px-4 py-2">Cinemática</td>
+              <td class="border px-4 py-2"><a href="#" class="text-blue-500 underline">Ver PDF</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Gráficos Individuais -->
+      <section id="feedbacks" class="grid md:grid-cols-3 gap-6">
+        <div class="bg-matematica text-white p-4 rounded-lg shadow">
+          <h3 class="font-semibold mb-2">Matemática</h3>
+          <canvas id="graficoMatematica" class="bg-white rounded"></canvas>
+          <button onclick="mostrarFeedback('matematica')" class="mt-2 text-sm underline">Ver Feedback</button>
+        </div>
+        <div class="bg-fisica text-white p-4 rounded-lg shadow">
+          <h3 class="font-semibold mb-2">Física</h3>
+          <canvas id="graficoFisica" class="bg-white rounded"></canvas>
+          <button onclick="mostrarFeedback('fisica')" class="mt-2 text-sm underline">Ver Feedback</button>
+        </div>
+        <div class="bg-quimica text-white p-4 rounded-lg shadow">
+          <h3 class="font-semibold mb-2">Química</h3>
+          <canvas id="graficoQuimica" class="bg-white rounded"></canvas>
+          <button onclick="mostrarFeedback('quimica')" class="mt-2 text-sm underline">Ver Feedback</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal de Feedback -->
+  <div id="modalFeedback" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl max-w-md w-full">
+      <h3 class="text-xl font-bold mb-4" id="modalTitulo">Feedback Detalhado</h3>
+      <p id="modalTexto" class="text-sm mb-4">...</p>
+      <a id="modalLink" href="#" class="text-blue-600 underline text-sm">Acessar material de apoio</a>
+      <div class="mt-4 text-right">
+        <button onclick="fecharModal()" class="bg-primary text-white px-4 py-2 rounded-lg">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const main = document.getElementById('mainContent');
+      sidebar.classList.toggle('sidebar-collapsed');
+      if (sidebar.classList.contains('sidebar-collapsed')) {
+        main.classList.remove('sidebar-open');
+        main.classList.add('sidebar-closed');
+      } else {
+        main.classList.remove('sidebar-closed');
+        main.classList.add('sidebar-open');
+      }
+    }
+
+    window.onload = () => {
+      document.getElementById('popup').classList.remove('hidden')
+      setTimeout(() => document.getElementById('popup').classList.add('hidden'), 5000)
+    }
+
+    new Chart(document.getElementById('graficoGeral'), {
+      type: 'bar',
+      data: {
+        labels: ['Matemática', 'Física', 'Química'],
+        datasets: [{
+          label: 'Nota Média',
+          data: [8.2, 7.5, 5.1],
+          backgroundColor: ['#4bb6b7', '#FFD700', '#2b2b97']
+        }]
+      },
+      options: { responsive: true, scales: { y: { beginAtZero: true, max: 10 } } }
+    })
+
+    new Chart(document.getElementById('graficoMatematica'), {
+      type: 'doughnut',
+      data: { labels: ['Acertos', 'Erros'], datasets: [{ data: [82, 18], backgroundColor: ['#4bb6b7', '#e2e8f0'] }] },
+      options: { responsive: true }
+    })
+    new Chart(document.getElementById('graficoFisica'), {
+      type: 'doughnut',
+      data: { labels: ['Acertos', 'Erros'], datasets: [{ data: [75, 25], backgroundColor: ['#FFD700', '#e2e8f0'] }] },
+      options: { responsive: true }
+    })
+    new Chart(document.getElementById('graficoQuimica'), {
+      type: 'doughnut',
+      data: { labels: ['Acertos', 'Erros'], datasets: [{ data: [51, 49], backgroundColor: ['#2b2b97', '#e2e8f0'] }] },
+      options: { responsive: true }
+    })
+
+    function mostrarFeedback(disciplina) {
+      const feedbacks = {
+        matematica: {
+          titulo: 'Matemática',
+          texto: 'Seu desempenho é excelente. Continue praticando funções e equações do 2º grau.',
+          link: '#'
+        },
+        fisica: {
+          titulo: 'Física',
+          texto: 'Você está indo bem, mas pode melhorar em Cinemática. Reveja os conceitos de velocidade e aceleração.',
+          link: '#'
+        },
+        quimica: {
+          titulo: 'Química',
+          texto: 'Atenção aos conteúdos de reações químicas. É importante revisar e praticar com exercícios.',
+          link: '#'
+        }
+      }
+      const { titulo, texto, link } = feedbacks[disciplina]
+      document.getElementById('modalTitulo').innerText = `Feedback de ${titulo}`
+      document.getElementById('modalTexto').innerText = texto
+      document.getElementById('modalLink').href = link
+      document.getElementById('modalFeedback').classList.remove('hidden')
+    }
+    function fecharModal() {
+      document.getElementById('modalFeedback').classList.add('hidden')
+    }
+  </script>
+</body>
+
+</html>

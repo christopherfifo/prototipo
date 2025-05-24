@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Minhas Aulas | Excellence LMS</title>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4bb6b7',
+            gold: '#FFD700',
+            darkblue: '#2b2b97',
+            matematica: '#4bb6b7',
+            fisica: '#FFD700',
+            quimica: '#2b2b97',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <a href="./telaAlu.html"
+     class="fixed top-6 left-6 flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full shadow hover:bg-darkblue transition-colors font-semibold z-50"
+     title="Voltar para a Home">
+    <i class="fa-solid fa-house text-lg"></i>
+    Home
+  </a>
+  <section id="aulas" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold mb-6 text-primary font-serif">Minhas Aulas</h2>
+
+    <!-- Destaque de Aulas Recomendadas -->
+    <div class="mb-10">
+      <h3 class="text-xl font-semibold text-darkblue mb-4">Aulas recomendadas para você</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow">
+          <h4 class="text-lg font-semibold text-quimica">Estequiometria</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">Reforce seus conhecimentos com foco em exercícios de mols e proporção química.</p>
+          <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Assistir Aula</a>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow">
+          <h4 class="text-lg font-semibold text-fisica">Cinemática Escalar</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">Revisão de velocidade média e aceleração. Indicada com base em seu relatório semestral.</p>
+          <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Assistir Aula</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="flex flex-col md:flex-row justify-between gap-4 mb-6">
+      <div>
+        <label for="filtroMateria" class="block text-sm font-medium mb-1">Filtrar por matéria</label>
+        <select id="filtroMateria" onchange="filtrarAulas()" class="px-3 py-2 rounded-md bg-white dark:bg-gray-800 border dark:border-gray-700 text-sm">
+          <option value="todos">Todas</option>
+          <option value="matematica">Matemática</option>
+          <option value="fisica">Física</option>
+          <option value="quimica">Química</option>
+        </select>
+      </div>
+      <div>
+        <label for="filtroConteudo" class="block text-sm font-medium mb-1">Buscar por conteúdo</label>
+        <input type="text" id="filtroConteudo" oninput="filtrarAulas()" placeholder="Ex: função, newton..." class="px-3 py-2 rounded-md bg-white dark:bg-gray-800 border dark:border-gray-700 text-sm w-full"/>
+      </div>
+    </div>
+
+    <!-- Lista de Aulas -->
+    <div id="listaAulas" class="grid md:grid-cols-3 gap-6">
+      <div class="aula bg-white dark:bg-gray-800 p-4 rounded-xl shadow" data-materia="matematica" data-conteudo="funções primeiro grau">
+        <h3 class="text-lg font-semibold text-matematica">Funções do 1º Grau</h3>
+        <p class="text-sm mt-2">Propriedades das funções lineares e gráficos.</p>
+        <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Assistir Aula</a>
+      </div>
+      <div class="aula bg-white dark:bg-gray-800 p-4 rounded-xl shadow" data-materia="fisica" data-conteudo="cinemática velocidade tempo">
+        <h3 class="text-lg font-semibold text-fisica">Cinemática Escalar</h3>
+        <p class="text-sm mt-2">Movimentos retilíneos, velocidade e aceleração.</p>
+        <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Assistir Aula</a>
+      </div>
+      <div class="aula bg-white dark:bg-gray-800 p-4 rounded-xl shadow" data-materia="quimica" data-conteudo="reações inorgânicas química">
+        <h3 class="text-lg font-semibold text-quimica">Reações Inorgânicas</h3>
+        <p class="text-sm mt-2">Classificação de reações: síntese, análise, etc.</p>
+        <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Assistir Aula</a>
+      </div>
+      <div class="aula bg-white dark:bg-gray-800 p-4 rounded-xl shadow" data-materia="matematica" data-conteudo="equações segundo grau bhaskara">
+        <h3 class="text-lg font-semibold text-matematica">Equações Quadráticas</h3>
+        <p class="text-sm mt-2">Bhaskara, raízes reais e complexas, parábolas.</p>
+        <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Assistir Aula</a>
+      </div>
+      <div class="aula bg-white dark:bg-gray-800 p-4 rounded-xl shadow" data-materia="fisica" data-conteudo="leis newton dinâmica força">
+        <h3 class="text-lg font-semibold text-fisica">Leis de Newton</h3>
+        <p class="text-sm mt-2">As três leis fundamentais da mecânica.</p>
+        <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Assistir Aula</a>
+      </div>
+      <div class="aula bg-white dark:bg-gray-800 p-4 rounded-xl shadow" data-materia="quimica" data-conteudo="estequiometria mol reações">
+        <h3 class="text-lg font-semibold text-quimica">Estequiometria</h3>
+        <p class="text-sm mt-2">Cálculos com massas, mols e volumes químicos.</p>
+        <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Assistir Aula</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function filtrarAulas() {
+      const materia = document.getElementById("filtroMateria").value;
+      const busca = document.getElementById("filtroConteudo").value.toLowerCase();
+      const aulas = document.querySelectorAll(".aula");
+
+      aulas.forEach((el) => {
+        const mat = el.getAttribute("data-materia");
+        const texto = el.getAttribute("data-conteudo").toLowerCase();
+        const matchMateria = materia === "todos" || mat === materia;
+        const matchBusca = texto.includes(busca);
+        el.style.display = matchMateria && matchBusca ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>

@@ -185,10 +185,21 @@
         </div>
     </div>
 
-    <!-- Responsividade -->
-    <style>
-       
-    </style>
+<script>
+    document.querySelectorAll('form').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            if (btn) {
+                btn.disabled = true;
+                btn.textContent = 'Enviando...';
+            }
+            setTimeout(function() {
+                window.location.href = './telaAlu.html';
+            }, 2000);
+        });
+    });
+</script>
 </body>
 
 </html>
