@@ -1,18 +1,13 @@
-<!-- Substituído: o conteúdo completo agora está com a nova seção de feedbacks detalhados incluída -->
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <!-- cabeçalho mantido -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <title>Desempenho do Aluno | Excellence LMS</title>
+  <title>Feedbacks Detalhados | Excellence LMS</title>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -22,6 +17,10 @@
             matematica: '#4bb6b7',
             fisica: '#FFD700',
             quimica: '#2b2b97',
+            biologia: '#4CAF50',
+            portugues: '#E57373',
+            historia: '#8D6E63',
+            geografia: '#64B5F6'
           },
           fontFamily: {
             serif: ['Merriweather', 'serif']
@@ -31,52 +30,176 @@
     }
   </script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white flex">
-  <!-- Sidebar e conteúdo principal existentes... -->
+<body class="bg-gray-50 text-gray-900 flex min-h-screen">
+  <!-- Botão Home -->
   <a href="./telaAlu.html"
      class="fixed top-6 left-6 flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full shadow hover:bg-darkblue transition-colors font-semibold z-50"
      title="Voltar para a Home">
     <i class="fa-solid fa-house text-lg"></i>
     Home
   </a>
-  <!-- Nova Seção: Feedbacks Detalha'd'os -->
-  <section id="feedback-detalhado" class="max-w-6xl mx-auto px-4 py-8">
-    <h2 class="text-2xl font-bold mb-6 text-primary font-serif">Feedbacks Detalhados por Matéria</h2>
 
-    <div class="space-y-6">
-      <!-- Matemática -->
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
-        <h3 class="text-xl font-semibold text-matematica">Matemática</h3>
-        <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Você obteve um desempenho excelente nesta disciplina. Os conceitos de Álgebra e Funções estão bem consolidados, mas é importante continuar praticando funções exponenciais e logarítmicas.</p>
-        <ul class="mt-3 ml-5 list-disc text-sm text-gray-600 dark:text-gray-300">
-          <li>Força: Equações do 2º grau, Sistemas lineares</li>
-          <li>Fraqueza: Funções exponenciais</li>
-        </ul>
-        <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Ver conteúdo recomendado</a>
-      </div>
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold mb-6 text-primary font-serif">Feedbacks Detalhados por Matéria e Ano</h2>
 
-      <!-- Física -->
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
-        <h3 class="text-xl font-semibold text-fisica">Física</h3>
-        <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Seu desempenho é bom, especialmente em Dinâmica. Contudo, é recomendável revisar Cinemática para consolidar os conceitos de movimento uniformemente variado.</p>
-        <ul class="mt-3 ml-5 list-disc text-sm text-gray-600 dark:text-gray-300">
-          <li>Força: Leis de Newton</li>
-          <li>Fraqueza: Gráficos de velocidade</li>
-        </ul>
-        <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Ver conteúdo recomendado</a>
-      </div>
-
-      <!-- Química -->
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
-        <h3 class="text-xl font-semibold text-quimica">Química</h3>
-        <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">A disciplina exige mais atenção. A parte de estequiometria e reações químicas precisa ser reforçada. Considere estudar as leis ponderais e fazer mais exercícios sobre mols.</p>
-        <ul class="mt-3 ml-5 list-disc text-sm text-gray-600 dark:text-gray-300">
-          <li>Força: Ligações químicas</li>
-          <li>Fraqueza: Estequiometria, Reações de neutralização</li>
-        </ul>
-        <a href="#" class="mt-3 inline-block text-blue-500 underline text-sm">Ver conteúdo recomendado</a>
-      </div>
+    <!-- Filtro de busca -->
+    <div class="flex flex-col md:flex-row md:items-center gap-4 mb-8">
+      <input id="buscaInput" type="text" placeholder="Buscar por matéria, ano ou palavra-chave..."
+        class="w-full md:w-1/2 px-4 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-primary outline-none transition" />
+      <select id="anoFiltro" class="px-4 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-primary outline-none transition">
+        <option value="">Todos os anos</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+      </select>
     </div>
-  </section>
+
+    <div id="feedbacksLista" class="space-y-6">
+      <!-- Feedbacks serão inseridos via JS -->
+    </div>
+  </main>
+
+  <script>
+    // Dados simulados de feedbacks
+    const feedbacks = [
+      {
+        id: 1,
+        materia: 'Matemática',
+        cor: 'matematica',
+        ano: 2025,
+        resumo: 'Ótimo desempenho em álgebra e funções. Pratique mais geometria analítica.',
+        pontos: ['Força: Equações do 2º grau, Sistemas lineares', 'Fraqueza: Geometria analítica'],
+        detalhes: 'Você consolidou bem os conceitos de álgebra, mas precisa reforçar geometria analítica.',
+      },
+      {
+        id: 2,
+        materia: 'Física',
+        cor: 'fisica',
+        ano: 2025,
+        resumo: 'Bom domínio em dinâmica. Reforce cinemática e gráficos de movimento.',
+        pontos: ['Força: Leis de Newton', 'Fraqueza: Cinemática'],
+        detalhes: 'Seu desempenho em dinâmica é destaque, mas revise conceitos de movimento.',
+      },
+      {
+        id: 3,
+        materia: 'Química',
+        cor: 'quimica',
+        ano: 2025,
+        resumo: 'Precisa reforçar estequiometria. Bom em ligações químicas.',
+        pontos: ['Força: Ligações químicas', 'Fraqueza: Estequiometria'],
+        detalhes: 'Atenção à parte de cálculos estequiométricos e reações.',
+      },
+      {
+        id: 4,
+        materia: 'Biologia',
+        cor: 'biologia',
+        ano: 2024,
+        resumo: 'Excelente em citologia. Reforce genética.',
+        pontos: ['Força: Citologia', 'Fraqueza: Genética'],
+        detalhes: 'Ótimo domínio dos conceitos celulares, mas revise genética mendeliana.',
+      },
+      {
+        id: 5,
+        materia: 'Português',
+        cor: 'portugues',
+        ano: 2024,
+        resumo: 'Leitura e interpretação muito boas. Pratique mais redação.',
+        pontos: ['Força: Interpretação de texto', 'Fraqueza: Redação'],
+        detalhes: 'Continue lendo textos diversos e escreva redações semanalmente.',
+      },
+      {
+        id: 6,
+        materia: 'História',
+        cor: 'historia',
+        ano: 2023,
+        resumo: 'Bom conhecimento em história geral. Reforce história do Brasil.',
+        pontos: ['Força: História Geral', 'Fraqueza: História do Brasil'],
+        detalhes: 'Aprofunde-se nos temas do Brasil Colônia e República.',
+      },
+      {
+        id: 7,
+        materia: 'Geografia',
+        cor: 'geografia',
+        ano: 2023,
+        resumo: 'Geopolítica excelente. Pratique mais cartografia.',
+        pontos: ['Força: Geopolítica', 'Fraqueza: Cartografia'],
+        detalhes: 'Reveja mapas e técnicas de orientação espacial.',
+      },
+      // Adicione mais feedbacks conforme necessário
+    ];
+
+    // Renderização dos feedbacks
+    function renderFeedbacks() {
+      const busca = document.getElementById('buscaInput').value.toLowerCase();
+      const ano = document.getElementById('anoFiltro').value;
+      const lista = document.getElementById('feedbacksLista');
+      lista.innerHTML = '';
+
+      const filtrados = feedbacks.filter(fb => {
+        const buscaMateria = fb.materia.toLowerCase().includes(busca);
+        const buscaResumo = fb.resumo.toLowerCase().includes(busca);
+        const buscaDetalhes = fb.detalhes.toLowerCase().includes(busca);
+        const buscaAno = ano === '' || fb.ano.toString() === ano;
+        return (buscaMateria || buscaResumo || buscaDetalhes) && buscaAno;
+      });
+
+      if (filtrados.length === 0) {
+        lista.innerHTML = `<div class="text-center text-gray-500 py-8">Nenhum feedback encontrado.</div>`;
+        return;
+      }
+
+      filtrados.forEach(fb => {
+        lista.innerHTML += `
+        <div class="bg-white border-l-8 border-${fb.cor} p-6 rounded-xl shadow flex flex-col md:flex-row md:items-center justify-between group transition hover:shadow-lg cursor-pointer"
+             onclick="abrirFeedback(${fb.id})">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-${fb.cor} text-white text-2xl">
+                <i class="fa-solid ${getIcon(fb.materia)}"></i>
+              </span>
+              <span class="text-lg font-bold text-${fb.cor}">${fb.materia}</span>
+              <span class="ml-3 text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">${fb.ano}</span>
+            </div>
+            <div class="text-gray-800 font-medium">${fb.resumo}</div>
+            <ul class="mt-2 ml-5 list-disc text-sm text-gray-600">
+              ${fb.pontos.map(p => `<li>${p}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="mt-4 md:mt-0 md:ml-8 flex items-center gap-2">
+            <span class="text-primary font-semibold text-sm">Ver detalhes</span>
+            <i class="fa-solid fa-arrow-right text-primary"></i>
+          </div>
+        </div>
+        `;
+      });
+    }
+
+    // Função para salvar no localStorage e redirecionar
+    function abrirFeedback(id) {
+      const fb = feedbacks.find(f => f.id === id);
+      localStorage.setItem('feedbackSelecionado', JSON.stringify(fb));
+      window.location.href = 'feedbackMateria.html';
+    }
+
+    // Ícones por matéria
+    function getIcon(materia) {
+      switch (materia) {
+        case 'Matemática': return 'fa-square-root-variable';
+        case 'Física': return 'fa-atom';
+        case 'Química': return 'fa-flask-vial';
+        case 'Biologia': return 'fa-dna';
+        case 'Português': return 'fa-book-open';
+        case 'História': return 'fa-landmark';
+        case 'Geografia': return 'fa-globe-americas';
+        default: return 'fa-book';
+      }
+    }
+
+    document.getElementById('buscaInput').addEventListener('input', renderFeedbacks);
+    document.getElementById('anoFiltro').addEventListener('change', renderFeedbacks);
+
+    // Inicialização
+    renderFeedbacks();
+  </script>
 </body>
 </html>
